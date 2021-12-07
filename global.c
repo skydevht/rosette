@@ -1,7 +1,7 @@
 #include <allegro5/allegro.h>
 #include <stdio.h>
 #include <ctype.h>
-#include <mem.h>
+// #include <mem.h>
 
 #include "global.h"
 #include "fw.h"

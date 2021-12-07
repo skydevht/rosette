@@ -2,7 +2,7 @@
 // Created by Hash on 6/2/2016.
 //
 
-#include <malloc.h>
+#include <stdlib.h>
 #include <allegro5/allegro_font.h>
 #include "button.h"
 #include "../global.h"

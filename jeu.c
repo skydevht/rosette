@@ -14,14 +14,14 @@ int joueur_actif;
 int joueur_gagnant, score_gagnant, score_perdant;
 Hud huds[2];
 int etat_suivant;
-static int pause = 0;
+static int paused = 0;
 static int fin = 0;
 
 
 Button *resume_btn, *exit_btn, *new_btn;
 
 void resume_click_handler(){
-    pause = (pause) ? 0 : 1;
+    paused = (paused) ? 0 : 1;
 }
 void new_click_handler(){
     etat_suivant = ROSETTE_ETAT_NOUVEAU_JEU;
@@ -29,7 +29,7 @@ void new_click_handler(){
 
 void exit_click_handler(){
     if (!fin) {
-        pause = 0;
+        paused = 0;
     } else {
     }
     etat_suivant = ROSETTE_ETAT_MENU_PRINCIPAL;
@@ -99,7 +99,7 @@ static int MajJeu()
 {
     // TODO execute only if mouse clicked in the surround box
     if (!fin) {
-        if (!pause) {
+        if (!paused) {
             maj_board();
             maj_hud(&huds[0]);
             maj_hud(&huds[1]);
@@ -107,7 +107,7 @@ static int MajJeu()
             maj_button(resume_btn);
             maj_button(exit_btn);
         }
-        if (clavier_touche_relachee(ALLEGRO_KEY_ESCAPE)) pause = (pause)? 0 : 1;
+        if (clavier_touche_relachee(ALLEGRO_KEY_ESCAPE)) paused = (paused)? 0 : 1;
     } else {
         maj_button(new_btn);
         maj_button(exit_btn);
@@ -123,7 +123,7 @@ static void AfficherJeu()
         afficher_board();
         afficher_hud(&huds[0]);
         afficher_hud(&huds[1]);
-        if (pause) {
+        if (paused) {
             al_draw_filled_rectangle(0, 0, largeur_ecran, hauteur_ecran, al_map_rgba_f(0, 0, 0, 0.7));
             al_draw_text(donnee_rosette[ROSETTE_HUD_SCORE_FONT].dat, al_map_rgb(0, 150, 136), largeur_ecran/2.0, 100, ALLEGRO_ALIGN_CENTER, "PAUSE");
             draw_button(resume_btn);

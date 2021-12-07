@@ -2,7 +2,7 @@
 // Created by Hash on 5/10/2016.
 //
 
-#include <malloc.h>
+#include <stdlib.h>
 #include <allegro5/haptic.h>
 #include "view.h"
 #include "global.h"
